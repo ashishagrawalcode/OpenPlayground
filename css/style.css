@@ -252,6 +252,11 @@ ul {
     color: #0891b2;
 }
 
+.quote-cover {
+    background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+    color: #ea580c;
+}
+
 .card-content {
     padding: 1.5rem;
 }
