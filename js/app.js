@@ -634,6 +634,44 @@ console.log(
     "color: #6366f1; font-size: 14px; font-weight: bold;"
 );
 
+feat/your-feature
+// ================= CATEGORY FILTERING FOR PROJECTS =================
+document.addEventListener("DOMContentLoaded", () => {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".projects-container .card");
+  const emptyState = document.getElementById("empty-state");
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // Active button UI
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const selectedCategory = btn.dataset.filter;
+      let visibleCount = 0;
+
+      projectCards.forEach((card) => {
+        const cardCategory = card.dataset.category;
+
+        if (
+          selectedCategory === "all" ||
+          cardCategory === selectedCategory
+        ) {
+          card.style.display = "block";
+          visibleCount++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      // Empty state handling
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? "block" : "none";
+      }
+    });
+  });
+});
+
 
 // --- 1. Navbar Scroll Logic ---
 const navbar = document.getElementById('navbar');
